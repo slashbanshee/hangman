@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -12,8 +13,10 @@ int main(void) {
     int life = 0;
 
     while(life != 5 && strcmp(word, dashedStr) != 0) {
+        char input = takeInput();
+        printf("You entered %c\n", input);
 
     }
 
-
+    return EXIT_SUCCESS;
 }
