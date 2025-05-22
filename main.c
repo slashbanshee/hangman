@@ -9,6 +9,7 @@ int main(void) {
     int size = strlen(word);
     char dashedStr[size];
     fillWithDash(dashedStr, &size);
+    int number = takeWord("./wordlist.txt");
 
 
     int life = 0;
