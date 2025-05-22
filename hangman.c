@@ -7,9 +7,10 @@ void fillWithDash(char word[], int *size) {
 }
 
 void cleanInputBuffer(void) {
-    int garbage = getchar();
-    if (garbage == '\n') return;
-    //Find a way to consume other letters/numbers/symbols if user enters one.
+    int garbage;
+    while((garbage = getchar() != '\n' && garbage != EOF)) {
+        //Just consume extra characters
+    }
 }
 
 char takeInput(void) {
