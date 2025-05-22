@@ -10,13 +10,23 @@ int main(void) {
     char dashedStr[size];
     fillWithDash(dashedStr, &size);
 
+
     int life = 0;
 
     while(life != 5 && strcmp(word, dashedStr) != 0) {
+        printf("Can you guess the following word ?\n%s\n", dashedStr);
         char input = takeInput();
-        printf("You entered %c\n", input);
-
+        char *found = strchr(word, input);
+        if(found == NULL) {
+            life += 1;
+        } else {
+            for(int i = 0; i < size; i++){
+                if (word[i] == input) {
+                    dashedStr[i] = input;
+                }
+            }
+        }
+        clearScreen();
     }
-
     return EXIT_SUCCESS;
 }

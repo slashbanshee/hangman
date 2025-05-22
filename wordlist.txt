@@ -1,0 +1,10 @@
+linux
+debian
+gentoo
+fedora
+terminal
+rootkit
+russia
+wiper
+malware
+emulator
