@@ -1,7 +1,9 @@
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <time.h>
 
 
 
@@ -42,13 +44,12 @@ int countWords(char* words){
 
 
 
-int takeWord(char* filePath){
+char* takeWord(char* filePath){
     struct stat fileInfo;
     stat(filePath, &fileInfo);
     char words[fileInfo.st_size + 1];
 
     FILE *fp;
-    //char word[1024];
     fp = fopen(filePath, "r");
 
     //This commented snippet cause some bugs that I have to investigate
@@ -63,21 +64,16 @@ int takeWord(char* filePath){
 
     int const size = countWords(words);
     char wordList[size][256];
-    char word[256] = "";
     char *token;
     token = strtok(words, "\n");
 
     int count = 0;
     while(token != NULL) {
+        printf("The token is: %s\n", token);
         strcpy(wordList[count], token);
         token = strtok(NULL, "\n");
         count++;
     }
-
-    for(int i = 0; i < size; i++){
-        printf("The word is: %s\n", wordList[i]);
-    }
-
 
     /*int count = 0;
     int index = 0;
@@ -102,5 +98,15 @@ int takeWord(char* filePath){
 
     printf("%s\n", wordList[1]);
 */
-    return 0;
+
+    static char word[256];
+    srand(time(0));
+    int chooseWord = rand() % (size - 0 + 1);
+    strcpy(word, wordList[chooseWord]);
+    //word[strlen(word)] = '\0';
+    char uni[256] = "Hello\0";
+    printf("The sizeof of uni is %lu\n", sizeof(uni));
+    printf("The size of word is: %lu\n", sizeof(word));
+
+    return word;
 }

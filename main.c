@@ -5,11 +5,12 @@
 #include "./hangman.h"
 
 int main(void) {
-    char word[] = "hello";
+    char word[256];
+    strcpy(word, takeWord("./wordlist.txt"));
     int size = strlen(word);
     char dashedStr[size];
     fillWithDash(dashedStr, &size);
-    int number = takeWord("./wordlist.txt");
+    printf("The word was: %s\n", word);
 
 
     int life = 0;
@@ -29,5 +30,7 @@ int main(void) {
         }
         clearScreen();
     }
+
+
     return EXIT_SUCCESS;
 }
